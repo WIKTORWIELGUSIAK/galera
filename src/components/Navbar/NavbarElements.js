@@ -7,12 +7,13 @@ export const Nav = styled.nav`
   background-color: #0808a6;
   color: white;
   justify-content: space-between;
-  padding: 8px 14px;
+  padding: 1vh 14px;
+  height: 5vh;
   @media (min-width: 768px) {
-    padding: 8px 28px;
+    padding: 1vh 28px;
   }
   @media (min-width: 1440px) {
-    padding: 8px 42px;
+    padding: 1vh 42px;
   }
 `;
 export const Logo = styled.image`

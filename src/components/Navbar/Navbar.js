@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <Nav>
       <Logo>
-        <img src="/images/logo.jpg" alt="logo" />
+        <img src="/images/logo.png" alt="logo" />
       </Logo>
       <Menu>
         <MenuLink href="">GALERIA</MenuLink>
