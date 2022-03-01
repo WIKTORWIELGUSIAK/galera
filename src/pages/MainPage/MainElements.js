@@ -4,7 +4,8 @@ import styled, { keyframes } from "styled-components";
 
 export const Main = styled.main`
   position: relative;
-  min-height: 93vh;
+  /* min-height: 92vh; */
+  height: calc(100vh - 56px);
   width: 100vw;
   background-color: #e5e5e5;
 `;
@@ -66,7 +67,7 @@ export const Wave1 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/images/Wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate} 30s linear infinite;
@@ -82,7 +83,7 @@ export const Wave2 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/images/Wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate2} 15s linear infinite;
@@ -98,7 +99,7 @@ export const Wave3 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/images/Wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate} 30s linear infinite;
@@ -114,7 +115,7 @@ export const Wave4 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/images/Wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate2} 5s linear infinite;

@@ -1,19 +1,19 @@
 /** @format */
 
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
   display: flex;
   background-color: #0808a6;
   color: white;
   justify-content: space-between;
-  padding: 1vh 14px;
-  height: 5vh;
-  @media (min-width: 768px) {
-    padding: 1vh 28px;
-  }
+  padding: 8px 14px;
+  height: 40px;
+  padding: 8px 28px;
+
   @media (min-width: 1440px) {
-    padding: 1vh 42px;
+    padding: 8px 42px;
   }
 `;
 export const Logo = styled.image`
@@ -41,7 +41,7 @@ export const Menu = styled.div`
     width: 50%;
   }
 `;
-export const MenuLink = styled.a`
+export const StyledLink = styled(Link)`
   display: flex;
   color: white;
   text-decoration: none;

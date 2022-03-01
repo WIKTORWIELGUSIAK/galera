@@ -1,23 +1,29 @@
 /** @format */
 
 import React from "react";
-import { Nav, Logo, Hamburger, Menu, MenuLink } from "./NavbarElements";
+import {
+  Nav,
+  Logo,
+  Hamburger,
+  Menu,
+  MenuLink,
+  StyledLink,
+} from "./NavbarElements";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
   return (
     <Nav>
-      <Logo>
-        <img src="/images/logo.png" alt="logo" />
-      </Logo>
+      <StyledLink to="/src/pages/MainPage/MainPage.js">
+        <Logo>
+          <img src="/images/Logo.png" alt="logo" />
+        </Logo>
+      </StyledLink>
       <Menu>
-        <MenuLink href="">GALERIA</MenuLink>
-        <MenuLink href="">TRASY</MenuLink>
-        <MenuLink href="">ZASADY</MenuLink>
+        <StyledLink to="/src/pages/Galery/Galery.js">GALERIA</StyledLink>
+        <StyledLink to="/src/pages/Roads/Roads.js">TRASY</StyledLink>
+        <StyledLink to="/src/pages/Rules/Rules.js">ZASADY</StyledLink>
       </Menu>
-      {/* <Hamburger>
-        <GiHamburgerMenu size={25} />
-      </Hamburger> */}
     </Nav>
   );
 }
