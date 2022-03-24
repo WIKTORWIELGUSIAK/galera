@@ -1,6 +1,8 @@
 /** @format */
 
 import React from "react";
+
+// Styled-component import
 import {
   Main,
   Header,

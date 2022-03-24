@@ -1,6 +1,8 @@
 /** @format */
 
 import styled from "styled-components";
+
+// import element from React Router
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
@@ -16,19 +18,11 @@ export const Nav = styled.nav`
     padding: 8px 42px;
   }
 `;
-export const Logo = styled.image`
+
+export const Logo = styled.div`
   display: flex;
 `;
-// export const Hamburger = styled.div`
-//   display: none;
-//   align-items: center;
-//   justify-content: flex-end;
-//   padding-right: 14px;
-//   width: 100%;
-//   @media (min-width: 768px) {
-//     display: none;
-//   }
-// `;
+
 export const Menu = styled.div`
   display: flex;
   width: 70%;
@@ -41,6 +35,8 @@ export const Menu = styled.div`
     width: 50%;
   }
 `;
+
+//Styling existed element imported from React Router
 export const StyledLink = styled(Link)`
   display: flex;
   color: white;

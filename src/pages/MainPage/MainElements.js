@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 
 export const Main = styled.main`
   position: relative;
-  /* min-height: 92vh; */
   height: calc(100vh - 56px);
   width: 100vw;
   background-color: #e5e5e5;
@@ -37,21 +36,18 @@ export const Content = styled.div`
   }
 `;
 
-// export const Waves = styled.div`
-//   display: flex;
-//   position: fixed;
-//   bottom: 0;
-//   height: 6rem;
-//   color: green;
-// `;
+//Animations with keyframes
 const animate = keyframes`
+/* from is started value of wave */
 from {
   background-position-x:0;
 }
+/* to is last position in each cycle */
 to{
   background-position-x:1000px;
 }
 `;
+
 const animate2 = keyframes`
 from {
   background-position-x:0;
@@ -60,6 +56,7 @@ to{
   background-position-x:-1000px;
 }
 `;
+
 export const Wave1 = styled.div`
   position: absolute;
   display: flex;

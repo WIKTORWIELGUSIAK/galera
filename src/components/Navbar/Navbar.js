@@ -1,15 +1,7 @@
 /** @format */
 
 import React from "react";
-import {
-  Nav,
-  Logo,
-  Hamburger,
-  Menu,
-  MenuLink,
-  StyledLink,
-} from "./NavbarElements";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { Nav, Logo, Menu, StyledLink } from "./NavbarElements";
 
 export default function Navbar() {
   return (
@@ -23,6 +15,9 @@ export default function Navbar() {
         <StyledLink to="/src/pages/Galery/Galery.js">GALERIA</StyledLink>
         <StyledLink to="/src/pages/Roads/Roads.js">TRASY</StyledLink>
         <StyledLink to="/src/pages/Rules/Rules.js">ZASADY</StyledLink>
+        <StyledLink to="/src/pages/UploadPage/UploadPage.js">
+          Formularz dodawania zdjęć
+        </StyledLink>
       </Menu>
     </Nav>
   );
