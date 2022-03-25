@@ -18,6 +18,7 @@ export default function Navbar() {
         <StyledLink to="/src/pages/UploadPage/UploadPage.js">
           Formularz dodawania zdjęć
         </StyledLink>
+        <StyledLink to="/src/pages/LoginPage/LoginPage.js">Login</StyledLink>
       </Menu>
     </Nav>
   );

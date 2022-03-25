@@ -8,6 +8,7 @@ import Galery from "./pages/Galery/Galery";
 import Roads from "./pages/Roads/Roads";
 import Rules from "./pages/Rules/Rules";
 import UploadPage from "./pages/UploadPage/UploadPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 export default function App() {
   const [categories, setCategories] = useState([]);
@@ -30,6 +31,10 @@ export default function App() {
           }
         />
         <Route path="/src/pages/Rules/Rules.js" element={<Rules />} />
+        <Route
+          path="/src/pages/LoginPage/LoginPage.js"
+          element={<LoginPage />}
+        />
       </Routes>
     </Router>
   );
