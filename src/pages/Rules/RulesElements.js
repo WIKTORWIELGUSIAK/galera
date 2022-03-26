@@ -14,6 +14,4 @@ export const Rools = styled.ol`
   display: flex;
   flex-direction: column;
 `;
-export const SingleRool = styled.p`
-  display: flex;
-`;
+export const SingleRool = styled.p``;

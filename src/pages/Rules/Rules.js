@@ -28,10 +28,13 @@ export default function Rules() {
         </SingleRool>
         <SingleRool>
           4. Każdy uczestnik spływu powinien znać taniec belgijski (możliwość
-          nauki kroków dostępna w Internecie:
-          <a>https://www.youtube.com/watch?v=HaoeHXMoQFo.</a>
-          https://www.youtube.com/watch?v=poH9F74e7B0 „Nowi” muszą mieć
-          świadomość ,że będą uczestniczyć w chrzcie.
+          nauki kroków dostępna
+          <a href="https://www.youtube.com/watch?v=HaoeHXMoQFo"> pod tym</a>
+          <a href="https://www.youtube.com/watch?v=poH9F74e7B0">
+            {" "}
+            lub tym
+          </a>{" "}
+          linkiem. „Nowi” muszą mieć świadomość ,że będą uczestniczyć w chrzcie.
         </SingleRool>
         <SingleRool>
           5. Na trasie zdarzają się różne sytuacje dlatego pamiętajmy żeby sobie
@@ -39,8 +42,8 @@ export default function Rules() {
         </SingleRool>
         <SingleRool>
           6. Koszulka firmowa jest obowiązkowa, nie zapominajmy również o
-          tematyce spływu ¬– im ciekawsze przebrania, tym lepiej! Za brak
-          przebrania grożą kary.
+          tematyce spływu (wstawić ikonę) im ciekawsze przebrania, tym lepiej!
+          Za brak przebrania grożą kary.
         </SingleRool>
         <SingleRool>
           7.Miejsca postoju i noclegów pozostawiamy w stanie co najmniej takim w

@@ -1,9 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-
-import { db } from "../../firebase-config";
-import { collection, getDocs, doc } from "firebase/firestore";
+import React, { useState } from "react";
 
 import {
   Wrapper,
@@ -15,6 +12,7 @@ import {
   ImgSlider,
   NavBtn,
   ModalBg,
+  Images,
 } from "./GaleryElements";
 import useFirebase from "../../hooks/useFirebase";
 
@@ -39,7 +37,6 @@ export default function Galery({ categories, setCategories }) {
         setSliderImgNum(sliderImgNum + 1);
       }
     }
-    console.log(e.target.id);
   };
 
   const openModal = (e) => {
@@ -48,42 +45,34 @@ export default function Galery({ categories, setCategories }) {
   };
   return (
     <Wrapper>
-      {images.length !== 0
-        ? categories.map((category) => {
-            const firstImage = images.find(
-              (el) => el.category === category.category
-            );
-            return (
-              <SingleImage
-                id={firstImage.category}
-                key={firstImage.id}
-                onClick={openModal}
-              >
-                <Image
-                  src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${firstImage.link}.jpg`}
-                  alt="img"
-                />
-                <OnHoverImg id={firstImage.category}>
-                  {firstImage.category}
-                </OnHoverImg>
-                <Description>{firstImage.category}</Description>
-              </SingleImage>
-            );
-          })
-        : null}
-      <SingleImage onClick={openModal}>
-        <Image
-          src="https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/galera/dmnsznuawecrqrcnxkun.jpg"
-          alt="img"
-        />
-        <OnHoverImg>asf</OnHoverImg>
-        <Description>2015</Description>
-      </SingleImage>
+      <Images>
+        {images.length !== 0
+          ? categories.map((category) => {
+              const firstImage = images.find(
+                (el) => el.category === category.category
+              );
+              return (
+                <SingleImage
+                  id={firstImage.category}
+                  key={firstImage.id}
+                  onClick={openModal}
+                >
+                  <Image
+                    src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${firstImage.link}.jpg`}
+                    alt="img"
+                  />
+                  <OnHoverImg id={firstImage.category}>
+                    {firstImage.category}
+                  </OnHoverImg>
+                  <Description>{firstImage.category}</Description>
+                </SingleImage>
+              );
+            })
+          : null}
+      </Images>
 
       {modalState ? (
         <Modal>
-          {/* {sliderImages.map((img) => { */}
-          {/* return ( */}
           <ModalBg onClick={(e) => openModal(e)}></ModalBg>
           <ImgSlider>
             <NavBtn
@@ -108,8 +97,6 @@ export default function Galery({ categories, setCategories }) {
               {">"}
             </NavBtn>
           </ImgSlider>
-          {/* ); */}
-          {/* })} */}
         </Modal>
       ) : null}
     </Wrapper>

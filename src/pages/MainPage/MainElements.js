@@ -4,14 +4,14 @@ import styled, { keyframes } from "styled-components";
 
 export const Main = styled.main`
   position: relative;
-  height: calc(100vh - 56px);
+  height: 100vh;
   width: 100vw;
   background-color: #e5e5e5;
 `;
 
 export const Header = styled.header`
   font-size: 32px;
-  padding-top: 4em;
+  padding-top: 6em;
   font-weight: 700;
 
   font-family: "Dancing Script", cursive;

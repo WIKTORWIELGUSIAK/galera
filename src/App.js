@@ -16,13 +16,14 @@ export default function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route
           path="/src/pages/Galery/Galery.js"
           element={
             <Galery categories={categories} setCategories={setCategories} />
           }
         />
-        <Route path="/src/pages/MainPage/MainPage.js" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/src/pages/Roads/Roads.js" element={<Roads />} />
         <Route
           path="/src/pages/UploadPage/UploadPage.js"

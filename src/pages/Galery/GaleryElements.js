@@ -16,6 +16,10 @@ export const OnHoverImg = styled.div`
   opacity: 0;
 `;
 export const Wrapper = styled.div`
+  display: flex;
+  padding-top: 56px;
+`;
+export const Images = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -57,29 +61,31 @@ export const Image = styled.img`
 `;
 
 export const Modal = styled.div`
-  position: absolute;
-  background-color: #0808a6ab;
-  top: 56px;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
-  /* z-index: 100; */
 `;
 export const ImgSlider = styled.div`
-  /* position: absolute; */
+  position: absolute;
+  justify-content: center;
+  align-items: center;
   display: flex;
-  height: 200px;
-  width: 200px;
-  background-color: black;
-  z-index: 100;
+  height: 500px;
+  width: 400px;
+  z-index: 200;
 `;
 export const NavBtn = styled.button`
-  z-index: 100;
+  z-index: 200;
 `;
 export const ModalBg = styled.div`
   position: absolute;
   display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0808a6ab;
 `;
