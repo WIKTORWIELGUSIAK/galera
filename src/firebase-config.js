@@ -2,15 +2,16 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4Jmo_AljBT5JcNYBaMrgr-c_cVE1W4B4",
-  authDomain: "galera-c33fa.firebaseapp.com",
-  projectId: "galera-c33fa",
-  storageBucket: "galera-c33fa.appspot.com",
-  messagingSenderId: "107076686565",
-  appId: "1:107076686565:web:d38485ef8e205ed7fe3a0c",
-  measurementId: "G-XTE2QR128C",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKED,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 // const firebaseConfig = {
 //   apiKey: "AIzaSyAFvJ4qb8GDbjY1V4dAIxMr843Yam3tlx4",
@@ -23,5 +24,7 @@ const firebaseConfig = {
 // };
 
 const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth();
 
 export const db = getFirestore(app);

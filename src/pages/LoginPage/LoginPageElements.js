@@ -9,7 +9,7 @@ export const Wraper = styled.div`
   justify-content: center;
   margin-top: 10vh;
 `;
-export const Form = styled.form`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
