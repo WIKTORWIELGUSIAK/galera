@@ -11,10 +11,11 @@ export const Nav = styled.nav`
   display: flex;
   position: fixed;
   background-color: #0808a6;
-  height: 40px;
+  height: 2.5em;
   width: 100%;
   color: white;
-  z-index: 100;
+  z-index: 200;
+  padding: 0.2em 0;
 `;
 
 export const NavElements = styled.div`

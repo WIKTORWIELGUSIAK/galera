@@ -1,6 +1,8 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "../../firebase-config";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 
 import {
   Wrapper,
@@ -13,90 +15,64 @@ import {
   NavBtn,
   ModalBg,
   Images,
+  ImageModal,
+  DelBtn,
+  Category,
 } from "./GaleryElements";
 import useFirebase from "../../hooks/useFirebase";
 
 export default function Galery({ categories, setCategories }) {
-  const [modalState, setModalState] = useState(false);
   const [images, setImages] = useState([]);
-  const [sliderImages, setSliderImages] = useState([]);
-  const [sliderImgNum, setSliderImgNum] = useState(1);
-  useFirebase(setCategories, setImages);
+  const [deleted, setDeleted] = useState(true);
+  const [modalState, setModalState] = useState(false);
+  const [modalImage, setModalImage] = useState("");
 
-  const navModal = (e) => {
-    if (e.target.id === "prev-img") {
-      if (sliderImgNum === 0) {
-        setSliderImgNum(sliderImages.length - 1);
-      } else {
-        setSliderImgNum(sliderImgNum - 1);
-      }
-    } else {
-      if (sliderImgNum === sliderImages.length - 1) {
-        setSliderImgNum(0);
-      } else {
-        setSliderImgNum(sliderImgNum + 1);
-      }
-    }
+  const deleteImg = async (e) => {
+    const imgDoc = doc(db, "images", e.target.parentElement.id);
+    await deleteDoc(imgDoc);
+    setDeleted(!deleted);
   };
 
-  const openModal = (e) => {
-    setSliderImages(images.filter((el) => el.category === e.target.id));
+  const toggleModal = () => {
     setModalState(!modalState);
   };
+  const openModal = (e) => {
+    setModalState(true);
+    setModalImage(e.target.src);
+    console.log(modalImage);
+  };
+
+  useFirebase(setCategories, setImages, deleted);
+
   return (
     <Wrapper>
-      <Images>
-        {images.length !== 0
-          ? categories.map((category) => {
-              const firstImage = images.find(
-                (el) => el.category === category.category
-              );
-              return (
-                <SingleImage
-                  id={firstImage.category}
-                  key={firstImage.id}
-                  onClick={openModal}
-                >
-                  <Image
-                    src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${firstImage.link}.jpg`}
-                    alt="img"
-                  />
-                  <OnHoverImg id={firstImage.category}>
-                    {firstImage.category}
-                  </OnHoverImg>
-                  <Description>{firstImage.category}</Description>
-                </SingleImage>
-              );
-            })
-          : null}
-      </Images>
-
+      {categories.map((category) => {
+        return (
+          <Category key={category.category}>
+            <Description>{category.category}</Description>
+            <Images>
+              {images
+                .filter((el) => el.category === category.category)
+                .map((image) => {
+                  return (
+                    <SingleImage id={image.id} key={image.id}>
+                      <Image
+                        onClick={openModal}
+                        src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${image.link}.jpg`}
+                      />
+                      <DelBtn onClick={(e) => deleteImg(e)}>x</DelBtn>
+                    </SingleImage>
+                  );
+                })}
+            </Images>
+          </Category>
+        );
+      })}
       {modalState ? (
         <Modal>
-          <ModalBg onClick={(e) => openModal(e)}></ModalBg>
-          <ImgSlider>
-            <NavBtn
-              onClick={(e) => {
-                navModal(e);
-              }}
-              id="prev-img"
-            >
-              {"<"}
-            </NavBtn>
-            <Image
-              src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${sliderImages[sliderImgNum].link}.jpg`}
-              alt="img"
-            />
-            ;
-            <NavBtn
-              onClick={(e) => {
-                navModal(e);
-              }}
-              id="next-img"
-            >
-              {">"}
-            </NavBtn>
-          </ImgSlider>
+          <ModalBg onClick={toggleModal}>
+            <ImageModal src={modalImage}></ImageModal>
+          </ModalBg>
         </Modal>
       ) : null}
     </Wrapper>

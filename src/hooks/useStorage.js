@@ -27,7 +27,10 @@ const useStorage = (file, setFiles, selectedCategory) => {
   const formData = new FormData();
 
   formData.append("folder", "galera");
-  formData.append("upload_preset", "m0qiibuk");
+  formData.append(
+    "upload_preset",
+    process.env.REACT_APP_CLOUDINARY_PRESET_NAME
+  );
   formData.append("tags", selectedCategory);
   formData.append("file", file);
 
@@ -36,12 +39,14 @@ const useStorage = (file, setFiles, selectedCategory) => {
       setProgress(
         Math.floor((progressEvent.loaded / progressEvent.total) * 100)
       ),
+    api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
+    api_secret: process.env.REACT_APP_CLOUDINARY_API_SECRET,
   };
   useEffect(() => {
     selectedCategory != "choose"
       ? axios
           .post(
-            "https://api.cloudinary.com/v1_1/galera-kajaki/image/upload",
+            `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
             formData,
             config
           )

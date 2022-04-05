@@ -2,22 +2,10 @@
 
 import styled from "styled-components";
 
-export const OnHoverImg = styled.div`
-  background-color: #0808a665;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  aspect-ratio: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-`;
 export const Wrapper = styled.div`
   display: flex;
-  padding-top: 56px;
+  flex-direction: column;
+  padding-top: 4em;
 `;
 export const Images = styled.div`
   display: grid;
@@ -45,8 +33,9 @@ export const Images = styled.div`
 
 export const SingleImage = styled.div`
   position: relative;
-  &:hover ${OnHoverImg} {
-    opacity: 1;
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 export const Description = styled.div`
@@ -55,9 +44,14 @@ export const Description = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  z-index: 100;
   aspect-ratio: 1;
   object-fit: cover;
+`;
+export const ImageModal = styled.img`
+  max-height: 94%;
+  width: 80%;
+  margin: 3% 10%;
+  object-fit: contain;
 `;
 
 export const Modal = styled.div`
@@ -65,19 +59,26 @@ export const Modal = styled.div`
   position: fixed;
   justify-content: center;
   align-items: center;
-  top: 0;
+  top: 2.5em;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 2.5em);
+  z-index: 102;
 `;
 export const ImgSlider = styled.div`
   position: absolute;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 500px;
-  width: 400px;
-  z-index: 200;
+  width: 75%;
+  height: auto;
+
+  /* padding-top: 2.7em; */
+  margin-top: 2.7em;
+  /* z-index: 200; */
+  @media (min-height: 768px) {
+    max-height: auto;
+  }
 `;
 export const NavBtn = styled.button`
   z-index: 200;
@@ -85,7 +86,23 @@ export const NavBtn = styled.button`
 export const ModalBg = styled.div`
   position: absolute;
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: #0808a6ab;
+`;
+
+export const DelBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  background-color: inherit;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+`;
+
+export const Category = styled.section`
+  display: flex;
+  flex-direction: column;
 `;
