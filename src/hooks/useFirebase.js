@@ -2,15 +2,13 @@
 
 // /** @format */
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { db } from "../firebase-config";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import axios from "axios";
+import { collection, getDocs } from "firebase/firestore";
 
-const useFirebase = (setCategories, setImages) => {
+const useFirebase = (setCategories, setImages, deleted, setRoads) => {
   const categoriesCollectionRef = collection(db, "categories");
   const imagesCollectionRef = collection(db, "images");
-  const data = getDocs(categoriesCollectionRef);
   useEffect(() => {
     const displayCategories = async () => {
       const data = await getDocs(categoriesCollectionRef);
@@ -20,7 +18,6 @@ const useFirebase = (setCategories, setImages) => {
           id: doc.id,
         }))
       );
-      console.log("może");
     };
     displayCategories();
   }, []);
@@ -37,7 +34,7 @@ const useFirebase = (setCategories, setImages) => {
       );
     };
     displayImages();
-  }, []);
+  }, [deleted]);
 };
 
 export default useFirebase;
