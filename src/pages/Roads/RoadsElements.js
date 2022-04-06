@@ -1,6 +1,7 @@
 /** @format */
 
 import styled from "styled-components";
+import { IoTrash } from "react-icons/io5";
 import {
   MapContainer,
   TileLayer,
@@ -15,10 +16,17 @@ export const Map = styled(MapContainer)`
   width: 100vw;
   height: calc(100vh - 2.5em);
   z-index: 1;
+  cursor: ${(props) => props.cursor};
 `;
 
 export const StyledTitleLayer = styled(TileLayer)``;
 export const StyledMarker = styled(Marker)``;
+export const Trash = styled(IoTrash)`
+  position: absolute;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+`;
 export const StyledPopup = styled(Popup)`
   z-index: 50000;
 `;
@@ -43,4 +51,8 @@ export const ClickButton = styled.button`
   height: 50px;
   width: 50px;
   cursor: pointer;
+`;
+
+export const DelBtn = styled.button`
+  display: flex;
 `;

@@ -12,6 +12,8 @@ export const Images = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   padding: 1rem 1rem;
+  cursor: ${(props) => props.cursor};
+
   @media (min-width: 375px) {
     padding: 1rem 2rem;
   }

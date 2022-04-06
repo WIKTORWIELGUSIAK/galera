@@ -24,6 +24,7 @@ import useFirebase from "../../hooks/useFirebase";
 export default function Galery({ categories, setCategories }) {
   const [images, setImages] = useState([]);
   const [deleted, setDeleted] = useState(true);
+  const [test, setTest] = useState(true);
   const [modalState, setModalState] = useState(false);
   const [modalImage, setModalImage] = useState("");
 
@@ -43,14 +44,16 @@ export default function Galery({ categories, setCategories }) {
   };
 
   useFirebase(setCategories, setImages, deleted);
-
+  console.log(test);
   return (
     <Wrapper>
       {categories.map((category) => {
         return (
           <Category key={category.category}>
-            <Description>{category.category}</Description>
-            <Images>
+            <Description onClick={() => setTest(!test)}>
+              {category.category}
+            </Description>
+            <Images cursor={test ? "pointer" : "grab"}>
               {images
                 .filter((el) => el.category === category.category)
                 .map((image) => {

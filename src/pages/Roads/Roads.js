@@ -1,7 +1,7 @@
 /** @format */
 import { db } from "../../firebase-config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useMapEvents } from "react-leaflet";
 
 import {
@@ -12,6 +12,8 @@ import {
   Button,
   ClickButton,
   StyledPolyline,
+  DelBtn,
+  Trash,
 } from "./RoadsElements";
 // function LocationMarker() {
 //   const [position, setPosition] = useState(null);
@@ -49,7 +51,6 @@ function MyComponent(positions) {
   useMapEvents({
     click: (e) => {
       let latlng = e.latlng;
-      console.log(latlng);
       if (positions.drow) {
         if (positions.positions === null) {
           positions.setPositions([[latlng.lat, latlng.lng]]);
@@ -69,6 +70,9 @@ export default function Roads() {
   const [positions, setPositions] = useState(null);
   const [road, setRoad] = useState([]);
   const [drow, setDrow] = useState(false);
+  const ref = useRef();
+
+  const mapSelector = ref.current;
   const roadsCollectionRef = collection(db, "roads");
 
   useEffect(() => {
@@ -96,12 +100,17 @@ export default function Roads() {
       setPositions(null);
     }
   };
+  const changeCursor = () => {
+    mapSelector.children[0].style.cursor =
+      drow === false ? "crosshair" : "grab";
+  };
   const startDrow = () => {
     setDrow(!drow);
+    changeCursor();
   };
-  console.log(road);
+  console.log(drow);
   return (
-    <div>
+    <div ref={ref}>
       <Map center={[50.06485, 19.96865]} zoom={13}>
         <StyledTitleLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -118,7 +127,9 @@ export default function Roads() {
         {road.map((el, i) => {
           return (
             <StyledPolyline key={i} positions={el} weight={10}>
-              <StyledPopup>PYSIA</StyledPopup>
+              <StyledPopup>
+                <Trash></Trash>
+              </StyledPopup>
             </StyledPolyline>
           );
         })}
@@ -132,7 +143,7 @@ export default function Roads() {
       <Button type="submit" onClick={saveRoad}>
         Dodaj trasę
       </Button>
-      <ClickButton onClick={() => setDrow(!drow)}>Rysuj</ClickButton>
+      <ClickButton onClick={() => startDrow()}>Rysuj</ClickButton>
     </div>
   );
 }
