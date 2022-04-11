@@ -1,19 +1,32 @@
 /** @format */
 
 import styled from "styled-components";
+import { IoTrash } from "react-icons/io5";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 4em;
 `;
+
+export const Category = styled.section`
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 1.5em;
+`;
+
+export const Description = styled.div`
+  text-align: center;
+`;
+
 export const Images = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   padding: 1rem 1rem;
   cursor: ${(props) => props.cursor};
-
   @media (min-width: 375px) {
     padding: 1rem 2rem;
   }
@@ -35,13 +48,9 @@ export const Images = styled.div`
 
 export const SingleImage = styled.div`
   position: relative;
-
-  &:hover {
+  /* &:hover {
     transform: scale(1.1);
-  }
-`;
-export const Description = styled.div`
-  text-align: center;
+  } */
 `;
 
 export const Image = styled.img`
@@ -49,11 +58,45 @@ export const Image = styled.img`
   aspect-ratio: 1;
   object-fit: cover;
 `;
-export const ImageModal = styled.img`
-  max-height: 94%;
-  width: 80%;
-  margin: 3% 10%;
-  object-fit: contain;
+
+export const DelBtnHolder = styled.div`
+  width: 15%;
+  max-width: 1em;
+  height: 15%;
+  max-height: 1em;
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.12);
+`;
+export const DelBtnBg = styled.div`
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Trash = styled(IoTrash)`
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 2px;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+  border: none;
+  z-index: 0;
+  cursor: pointer;
 `;
 
 export const Modal = styled.div`
@@ -67,24 +110,6 @@ export const Modal = styled.div`
   height: calc(100% - 2.5em);
   z-index: 102;
 `;
-export const ImgSlider = styled.div`
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: 75%;
-  height: auto;
-
-  /* padding-top: 2.7em; */
-  margin-top: 2.7em;
-  /* z-index: 200; */
-  @media (min-height: 768px) {
-    max-height: auto;
-  }
-`;
-export const NavBtn = styled.button`
-  z-index: 200;
-`;
 export const ModalBg = styled.div`
   position: absolute;
   display: flex;
@@ -93,18 +118,10 @@ export const ModalBg = styled.div`
   background-color: #0808a6ab;
 `;
 
-export const DelBtn = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 101;
-  background-color: inherit;
-  border: none;
-  font-size: 30px;
-  font-weight: bold;
-`;
-
-export const Category = styled.section`
-  display: flex;
-  flex-direction: column;
+export const ImageModal = styled.img`
+  max-height: 94%;
+  max-width: 80%;
+  margin: 3% 10%;
+  object-fit: contain;
+  z-index: 3000;
 `;

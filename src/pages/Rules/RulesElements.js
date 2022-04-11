@@ -6,12 +6,16 @@ export const Wraper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 4vw;
+  padding-top: 2em;
 `;
 export const Header = styled.h2`
-  display: flex;
+  text-align: center;
 `;
 export const Rools = styled.ol`
   display: flex;
   flex-direction: column;
+  padding: 0 2em;
 `;
-export const SingleRool = styled.p``;
+export const SingleRool = styled.li`
+  margin-top: 0.5em;
+`;

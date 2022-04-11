@@ -1,59 +1,64 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { db } from "../../firebase-config";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 
 import {
   Wrapper,
   Image,
   SingleImage,
   Description,
-  OnHoverImg,
   Modal,
-  ImgSlider,
-  NavBtn,
   ModalBg,
   Images,
   ImageModal,
-  DelBtn,
   Category,
+  Trash,
+  DelBtnHolder,
+  DelBtnBg,
 } from "./GaleryElements";
 import useFirebase from "../../hooks/useFirebase";
 
 export default function Galery({ categories, setCategories }) {
   const [images, setImages] = useState([]);
   const [deleted, setDeleted] = useState(true);
-  const [test, setTest] = useState(true);
   const [modalState, setModalState] = useState(false);
   const [modalImage, setModalImage] = useState("");
 
   const deleteImg = async (e) => {
-    const imgDoc = doc(db, "images", e.target.parentElement.id);
+    const imgDoc = doc(db, "images", e.target.id);
+    console.log(e.target.id);
     await deleteDoc(imgDoc);
     setDeleted(!deleted);
   };
 
-  const toggleModal = () => {
-    setModalState(!modalState);
-  };
   const openModal = (e) => {
     setModalState(true);
     setModalImage(e.target.src);
-    console.log(modalImage);
   };
+  const closeModal = () => {
+    setModalState(false);
+    setModalImage("");
+  };
+  const keyPress = useCallback((e) => {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  });
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress);
+  }, [keyPress]);
 
   useFirebase(setCategories, setImages, deleted);
-  console.log(test);
+
   return (
     <Wrapper>
       {categories.map((category) => {
         return (
           <Category key={category.category}>
-            <Description onClick={() => setTest(!test)}>
-              {category.category}
-            </Description>
-            <Images cursor={test ? "pointer" : "grab"}>
+            <Description>{category.category}</Description>
+            <Images>
               {images
                 .filter((el) => el.category === category.category)
                 .map((image) => {
@@ -63,7 +68,13 @@ export default function Galery({ categories, setCategories }) {
                         onClick={openModal}
                         src={`https://res.cloudinary.com/galera-kajaki/image/upload/v1647894863/${image.link}.jpg`}
                       />
-                      <DelBtn onClick={(e) => deleteImg(e)}>x</DelBtn>
+                      <DelBtnHolder>
+                        <DelBtnBg
+                          id={image.id}
+                          onClick={(e) => deleteImg(e)}
+                        ></DelBtnBg>
+                        <Trash />
+                      </DelBtnHolder>
                     </SingleImage>
                   );
                 })}
@@ -73,9 +84,8 @@ export default function Galery({ categories, setCategories }) {
       })}
       {modalState ? (
         <Modal>
-          <ModalBg onClick={toggleModal}>
-            <ImageModal src={modalImage}></ImageModal>
-          </ModalBg>
+          <ModalBg onClick={closeModal}></ModalBg>
+          <ImageModal src={modalImage} />
         </Modal>
       ) : null}
     </Wrapper>
