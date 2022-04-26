@@ -8,14 +8,17 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 
 export const Nav = styled.nav`
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  box-sizing: border-box;
   display: flex;
   position: fixed;
   background-color: #0808a6;
-  height: 2.5em;
+  height: 3em;
   width: 100%;
   color: white;
-  z-index: 200;
-  padding: 0.2em 0;
+  z-index: 100;
+  padding: 0.4em 0;
 `;
 
 export const NavElements = styled.div`
@@ -65,9 +68,25 @@ export const Menu = styled.div`
 
 //Styling existed element imported from React Router
 export const StyledLink = styled(Link)`
-  display: flex;
   color: white;
   text-decoration: none;
+
+  &:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-radius: 1.5px;
+    background-color: transparent;
+    display: block;
+    transition: height 0.1s ease-in-out, width 0.3s ease-in-out;
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+    }
+  }
 `;
 
 //Styling existed element imported from React Icons

@@ -8,6 +8,7 @@ import {
   Marker,
   Popup,
   Polyline,
+  ZoomControl,
 } from "react-leaflet";
 
 export const Map = styled(MapContainer)`
@@ -30,29 +31,45 @@ export const Trash = styled(IoTrash)`
 export const StyledPopup = styled(Popup)`
   z-index: 50000;
 `;
-export const StyledPolyline = styled(Polyline)`
-  color: red;
-`;
 
 export const Button = styled.button`
-  position: absolute;
-  z-index: 10000;
-  top: 50px;
-  right: 20px;
-  height: 50px;
-  width: 50px;
   cursor: pointer;
+  height: 30px;
+  color: white;
+  background-color: #4487fa;
+  border-radius: 15px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: none;
 `;
-export const ClickButton = styled.button`
+
+export const BtnPanel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
   position: absolute;
-  z-index: 10000;
-  top: 200px;
-  right: 20px;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
+  top: 2.8em;
+  left: 0.3em;
+  z-index: 1;
+  gap: 5px;
 `;
+
+// export const DrowButton = styled.button`
+//   z-index: 10000;
+//   top: 200px;
+//   right: 20px;
+//   height: 50px;
+//   width: 50px;
+//   cursor: pointer;
+// `;
 
 export const DelBtn = styled.button`
   display: flex;
+`;
+export const Zoom = styled(ZoomControl)``;
+export const StyledPolyline = styled(Polyline)`
+  background-color: green;
 `;

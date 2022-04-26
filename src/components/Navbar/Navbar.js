@@ -1,6 +1,7 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "../../App";
 import {
   Nav,
   Logo,
@@ -10,14 +11,14 @@ import {
   NavElements,
   Close,
 } from "./NavbarElements";
-// import { GiHamburgerMenu as Hamburger } from "react-icons/gi";
 
 export default function Navbar() {
   // State of display statu menu links
   const [menuDisplay, setMenuDisplay] = useState(false);
+  const app = useContext(AppContext);
 
   // Function to toggle menu on small screen
-  const displayMenu = () => {
+  const displayMenu = (e) => {
     setMenuDisplay(!menuDisplay);
   };
 
@@ -35,7 +36,12 @@ export default function Navbar() {
           </Logo>
         </StyledLink>
         <Menu display={menuDisplay ? "flex" : "none"}>
-          <StyledLink onClick={displayMenu} to="/src/pages/Galery/Galery.js">
+          <StyledLink
+            onClick={(e) => {
+              displayMenu(e);
+            }}
+            to="/src/pages/Galery/Galery.js"
+          >
             GALERIA
           </StyledLink>
           <StyledLink onClick={displayMenu} to="/src/pages/Roads/Roads.js">
@@ -44,12 +50,14 @@ export default function Navbar() {
           <StyledLink onClick={displayMenu} to="/src/pages/Rules/Rules.js">
             ZASADY
           </StyledLink>
-          <StyledLink
-            onClick={displayMenu}
-            to="/src/pages/UploadPage/UploadPage.js"
-          >
-            DODAJ ZDJĘCIA
-          </StyledLink>
+          {app.user !== null ? (
+            <StyledLink
+              onClick={displayMenu}
+              to="/src/pages/UploadPage/UploadPage.js"
+            >
+              DODAJ ZDJĘCIA
+            </StyledLink>
+          ) : null}
           <StyledLink
             onClick={displayMenu}
             to="/src/pages/LoginPage/LoginPage.js"

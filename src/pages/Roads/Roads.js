@@ -1,8 +1,9 @@
 /** @format */
 import { db } from "../../firebase-config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useMapEvents } from "react-leaflet";
+import { AppContext } from "../../App";
 
 import {
   Map,
@@ -10,42 +11,13 @@ import {
   StyledMarker,
   StyledPopup,
   Button,
-  ClickButton,
+  DrowButton,
   StyledPolyline,
   DelBtn,
   Trash,
+  BtnPanel,
+  Zoom,
 } from "./RoadsElements";
-// function LocationMarker() {
-//   const [position, setPosition] = useState(null);
-//   const [a, setA] = useState("");
-//   const map = useMapEvents({
-//     click(e) {
-//       let latlng = e.latlng;
-//       if (position === null) {
-//         setPosition([latlng.lat, latlng.lng]);
-//       } else {
-//         console.log("try");
-//         setA([...position]);
-//         setPosition([position, [latlng.lat, latlng.lng]]);
-//       }
-//     },
-//   });
-//   console.log(position);
-//   console.log(a);
-//   return (
-//     <div>
-//       <StyledMarker position={[50, 20]}>
-//         <StyledPopup>You are here</StyledPopup>
-//       </StyledMarker>
-//       <StyledPolyline
-//         positions={[
-//           [50, 20],
-//           [50.05, 20.05],
-//         ]}
-//       />
-//     </div>
-//   );
-// }
 
 function MyComponent(positions) {
   useMapEvents({
@@ -67,6 +39,7 @@ function MyComponent(positions) {
 }
 
 export default function Roads() {
+  const app = useContext(AppContext);
   const [positions, setPositions] = useState(null);
   const [road, setRoad] = useState([]);
   const [drow, setDrow] = useState(false);
@@ -90,15 +63,11 @@ export default function Roads() {
       road: JSON.stringify(positions),
     });
   };
-
   const saveRoad = () => {
-    if (road === null) {
-      uploadData();
-      setPositions(null);
-    } else {
-      uploadData();
-      setPositions(null);
-    }
+    uploadData();
+    setPositions(null);
+    setDrow(false);
+    changeCursor();
   };
   const changeCursor = () => {
     mapSelector.children[0].style.cursor =
@@ -111,7 +80,7 @@ export default function Roads() {
   console.log(drow);
   return (
     <div ref={ref}>
-      <Map center={[50.06485, 19.96865]} zoom={13}>
+      <Map center={[50.06485, 19.96865]} zoom={13} zoomControl={false}>
         <StyledTitleLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -126,7 +95,7 @@ export default function Roads() {
         />
         {road.map((el, i) => {
           return (
-            <StyledPolyline key={i} positions={el} weight={10}>
+            <StyledPolyline color="#4487fa" key={i} positions={el} weight={10}>
               <StyledPopup>
                 <Trash></Trash>
               </StyledPopup>
@@ -135,15 +104,21 @@ export default function Roads() {
         })}
         {positions === null ? null : (
           <StyledPolyline
+            color="#4487fa"
             key={Math.random()}
             positions={positions}
           ></StyledPolyline>
         )}
+        <Zoom position="bottomright"></Zoom>
       </Map>
-      <Button type="submit" onClick={saveRoad}>
-        Dodaj trasę
-      </Button>
-      <ClickButton onClick={() => startDrow()}>Rysuj</ClickButton>
+      {app.user !== null ? (
+        <BtnPanel>
+          <Button type="submit" onClick={positions === null ? null : saveRoad}>
+            Dodaj trasę
+          </Button>
+          <Button onClick={() => startDrow()}>Rysuj</Button>
+        </BtnPanel>
+      ) : null}
     </div>
   );
 }

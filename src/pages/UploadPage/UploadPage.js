@@ -1,13 +1,15 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Categories from "../../components/Categories/Categories";
 import UploadCategory from "../../components/UploadCategory/UploadCategory";
 import UploadFiles from "../../components/UploadFiles/UploadFiles";
 import { Wraper, UploadForm, Title } from "./UploadPageElemts";
+import App, { AppContext } from "../../App";
 
-export default function UploadPage({ categories, setCategories }) {
+export default function UploadPage() {
   // Const states
+  const app = useContext(AppContext);
   const [files, setFiles] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("choose");
   const [inputText, setInputText] = useState("");
@@ -19,8 +21,8 @@ export default function UploadPage({ categories, setCategories }) {
       <Title>Dodaj zdjęcia do wybranego spływu</Title>
 
       <Categories
-        categories={categories}
-        setCategories={setCategories}
+        categories={app.categories}
+        setCategories={app.setCategories}
       ></Categories>
       <UploadForm>
         <UploadCategory
@@ -28,8 +30,8 @@ export default function UploadPage({ categories, setCategories }) {
           setInputText={setInputText}
           displayInput={displayInput}
           setDisplayInput={setDisplayInput}
-          categories={categories}
-          setCategories={setCategories}
+          categories={app.categories}
+          setCategories={app.setCategories}
           showInput={showInput}
           setShowInput={setShowInput}
           selectedCategory={selectedCategory}

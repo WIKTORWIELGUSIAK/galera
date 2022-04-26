@@ -48,9 +48,9 @@ export const Images = styled.div`
 
 export const SingleImage = styled.div`
   position: relative;
-  /* &:hover {
+  &:hover {
     transform: scale(1.1);
-  } */
+  }
 `;
 
 export const Image = styled.img`
@@ -64,7 +64,7 @@ export const DelBtnHolder = styled.div`
   max-width: 1em;
   height: 15%;
   max-height: 1em;
-  z-index: 200;
+  z-index: 97;
   position: absolute;
   top: 0;
   right: 0;
@@ -77,7 +77,7 @@ export const DelBtnBg = styled.div`
   width: 100%;
   height: 100%;
   opacity: 0;
-  z-index: 200;
+  z-index: 98;
   position: absolute;
   top: 0;
   right: 0;
@@ -90,12 +90,11 @@ export const Trash = styled(IoTrash)`
   top: 0;
   right: 0;
   padding: 2px;
-  z-index: 101;
+  z-index: 97;
   width: 100%;
   height: 100%;
   color: whitesmoke;
   border: none;
-  z-index: 0;
   cursor: pointer;
 `;
 
@@ -108,7 +107,7 @@ export const Modal = styled.div`
   left: 0;
   width: 100%;
   height: calc(100% - 2.5em);
-  z-index: 102;
+  z-index: 99;
 `;
 export const ModalBg = styled.div`
   position: absolute;
@@ -123,5 +122,5 @@ export const ImageModal = styled.img`
   max-width: 80%;
   margin: 3% 10%;
   object-fit: contain;
-  z-index: 3000;
+  z-index: 99;
 `;
