@@ -48,6 +48,7 @@ export const Images = styled.div`
 
 export const SingleImage = styled.div`
   position: relative;
+  transition: 0.2s ease-in-out;
   &:hover {
     transform: scale(1.1);
   }

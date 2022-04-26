@@ -7,7 +7,7 @@ import React, {
   useContext,
   createContext,
 } from "react";
-import { db, auth } from "../../firebase-config";
+import { db } from "../../firebase-config";
 import { doc, deleteDoc } from "firebase/firestore";
 import { AppContext } from "../../App";
 
