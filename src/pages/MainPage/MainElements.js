@@ -64,7 +64,7 @@ export const Wave1 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate} 30s linear infinite;
@@ -80,7 +80,7 @@ export const Wave2 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate2} 15s linear infinite;
@@ -96,7 +96,7 @@ export const Wave3 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate} 30s linear infinite;
@@ -112,7 +112,7 @@ export const Wave4 = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("/images/wave.png");
+  background: url("/wave.png");
   background-size: 1000px 100px;
 
   animation: ${animate2} 5s linear infinite;
