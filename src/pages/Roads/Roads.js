@@ -11,9 +11,7 @@ import {
   StyledMarker,
   StyledPopup,
   Button,
-  DrowButton,
   StyledPolyline,
-  DelBtn,
   Trash,
   BtnPanel,
   Zoom,
@@ -95,7 +93,7 @@ export default function Roads() {
         />
         {road.map((el, i) => {
           return (
-            <StyledPolyline color="#4487fa" key={i} positions={el} weight={10}>
+            <StyledPolyline color="#4487fa" key={i} positions={el} weight={8}>
               <StyledPopup>
                 <Trash></Trash>
               </StyledPopup>

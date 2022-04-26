@@ -16,10 +16,6 @@ export default function LoginPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  onAuthStateChanged(auth, (currentUser) => {
-    app.setUser(currentUser);
-  });
-
   const login = async () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);

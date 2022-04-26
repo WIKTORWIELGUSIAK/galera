@@ -43,6 +43,10 @@ export const Button = styled.button`
   align-items: center;
   display: flex;
   border: none;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: #4175f2;
+  }
 `;
 
 export const BtnPanel = styled.div`
@@ -57,18 +61,6 @@ export const BtnPanel = styled.div`
   gap: 5px;
 `;
 
-// export const DrowButton = styled.button`
-//   z-index: 10000;
-//   top: 200px;
-//   right: 20px;
-//   height: 50px;
-//   width: 50px;
-//   cursor: pointer;
-// `;
-
-export const DelBtn = styled.button`
-  display: flex;
-`;
 export const Zoom = styled(ZoomControl)``;
 export const StyledPolyline = styled(Polyline)`
   background-color: green;

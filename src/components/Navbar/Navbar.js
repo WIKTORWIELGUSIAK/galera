@@ -32,7 +32,7 @@ export default function Navbar() {
       <NavElements>
         <StyledLink to="/">
           <Logo onClick={hideMenu}>
-            <img src="/images/Logo.png" alt="logo" />
+            <img src="/logo.png" alt="logo" />
           </Logo>
         </StyledLink>
         <Menu display={menuDisplay ? "flex" : "none"}>
